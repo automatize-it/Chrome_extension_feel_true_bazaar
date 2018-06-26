@@ -1,0 +1,28 @@
+{
+	"manifest_version": 2,
+	"name": "Feel true bazaar",
+	"version": "0.9",
+	"icons": {
+		"32": "ftb_32x32.png",
+		"48": "ftb_48x48.png",
+		"64": "ftb_64x64.png",
+		"128": "ftb_128x128.png",
+		"256": "ftb_256x256.png"
+	},
+	"permissions": [
+		"tabs",
+		"<all_urls>"
+	],
+	"browser_action": {
+		"default_title": "Блокировка нежелательных новостей и текстов.",
+		"default_icon": "ftb_48x48.png",
+		"default_popup" : "popup.html"
+	},
+	"content_scripts": [
+    {
+      "matches": [ "https://*/*", "http://*/*" ],
+	  "js": [ "client.js" ],
+	  "run_at": "document_end"
+    }
+	]
+}
