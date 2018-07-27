@@ -1,3 +1,34 @@
-<meta charset="utf-8"/>
-<img src="ftb_128x128.png"/>
-<h3>Блокировка нежелательных новостей включена.<h3>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<style type="text/css">
+		 #ftbcrurlfld {
+            font-family: 'Arial', arial, serif;
+            font-size: 20px;
+            font-style: normal;
+            color: #000;
+            background-color: #F66;
+            text-align: center;
+        }
+	</style>
+	<!--<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+	-->
+</head>
+<body>
+	<img src="ftb_128x128.png" width="64" height="64"/>
+	<p style="font-family: 'Arial', arial, serif; font-size: 16px; font-style: bold;">Блокировка нежелательных текстов <span style="color: green;" id="infotxt">включена</span> на этом сайте.</p>
+	<div id="ftbcrurlfld" title="Отключить на этом сайте"></div>
+	<br>
+	<select id="wrds2blck" title="клик на слове для удаления" size="8" style="width:200px;">
+		<!--
+		<option value="volvo">украи</option>
+		<option value="saab">порошенко</option>
+		<option value="mercedes">донбасс</option>
+		<option value="audi">киев</option>
+		-->
+	</select>
+	<input id="addstopwrd" title="добавить слово или часть слова" style="width:180px;"></input><button id="addbtn" style="width:20px; font-size:14px; font-face: bold;">+</button>
+	<script src="popup.js"></script>
+</body>
+</html>
