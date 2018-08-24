@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Feel true bazaar",
-	"version": "0.93",
+	"version": "1.0",
 	"description": "This add-on replaces text containing words from stop-list by text \"Ничего интересного.\" on all sites.",
  	"icons": {
 		"32": "ftb_32x32.png",

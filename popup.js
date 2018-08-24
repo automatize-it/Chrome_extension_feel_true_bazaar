@@ -4,6 +4,21 @@ var currTabId = null;
 
 function gcu(){
 	
+	chrome.storage.local.get('endis', function (result) {
+		
+		if (result.endis == '1'){
+			
+			document.getElementById('onoffbtn').checked = true;
+		}
+		else{
+			
+			document.getElementById('onoffbtn').checked = false;
+			var ddd = document.getElementById('infotxt');
+			ddd.innerHTML = "отключена";
+			ddd.style.color = "FF0000";
+		}
+	});
+	
 	chrome.storage.local.get({wrdstoblck: []}, function (result) {
 		
 		//console.log(result);
@@ -87,6 +102,34 @@ document.getElementById("addbtn").addEventListener("click", function(){
 			
 		});
 	
+	
+});
+
+document.getElementById("onoffbtn").addEventListener("click", function(){
+	
+	var ttt = document.getElementById("onoffbtn");
+	
+	if (ttt.checked == true) {
+		
+		chrome.storage.local.set({endis:'1'}, function(){});
+		chrome.browserAction.setIcon({ path: 'ftb_48x48.png'});
+	}
+	else {
+		
+		chrome.storage.local.set({endis:'0'}, function(){});
+		ttt.checked = false;
+		chrome.browserAction.setIcon({ path: 'ftb_48x48_dsbld.png'});
+	}	
+	
+	console.log("tt");
+	chrome.tabs.getSelected(null,function (tab) {
+		
+		currTabId = tab.id;
+		currTabUrl = new URL(tab.url);
+		chrome.tabs.executeScript(currTabId, {code: 'window.location.reload();'});	
+	});
+	
+	window.location.reload();
 	
 });
 

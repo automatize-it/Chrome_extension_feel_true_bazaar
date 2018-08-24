@@ -7,6 +7,7 @@ var rgxp = /<(?!((\/|)b)|((\/|)i)|((\/|)em)|((\/|)mark)|((\/|)strong)|((\/|)pre)
 var curdom;
 var wrdsorig = ["украи","ДНР","ЛНР","киев","порошенко","донбасс"];
 var wrds = [];
+var localwrkstate = null;
 
 var firstdomain = 0;
 
@@ -33,6 +34,19 @@ function savecurdom(){
 
 function doact(){
 	
+	chrome.storage.local.get('endis', function (result) {
+				
+		if (result.endis == null) {
+				
+			chrome.storage.local.set({'endis': '1'}, function(){});
+			doclean();
+		}
+		if (result.endis == '1') {
+			
+			doclean();
+		}		
+	});
+		
 	/*	
 	chrome.storage.local.get({sitewhtlststrg: []}, function (result) {
 		
@@ -62,7 +76,7 @@ function doact(){
 		
 	});
 	*/
-	doclean();
+	//doclean();
 }
 	
 function doclean(){
@@ -130,6 +144,20 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     sendResponse(curdom);
     return true;
   }
+  
+  /*
+  if (message.wrkstate == "stat"){
+    
+    sendResponse(localwrkstate);
+    return true;
+  }
+  
+  if (message.wrkstate == "rev"){
+    
+    //sendResponse(localwrkstate);
+    return true;
+  }
+  */
   
   if(message.revert){
 	
